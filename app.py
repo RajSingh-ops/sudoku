@@ -21,7 +21,7 @@ class SudokuData(BaseModel):
 @app.post("/generate")
 def generate():
     result = subprocess.run(
-        ["game.exe"],
+        ["./game"],
         capture_output=True,
         text=True
     )
@@ -36,7 +36,7 @@ def submit(data: SudokuData):
     input_data = "\n".join(" ".join(r) for r in data.puzzle)
 
     solve_result = subprocess.run(
-        ["solve.exe"],
+        ["./solve"],
         input=input_data,
         capture_output=True,
         text=True
@@ -56,7 +56,7 @@ def solve(data: SudokuData):
     input_data = "\n".join(" ".join(r) for r in data.puzzle)
 
     solve_result = subprocess.run(
-        ["solve.exe"],
+        ["./solve"],
         input=input_data,
         capture_output=True,
         text=True
